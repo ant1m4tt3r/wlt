@@ -17,5 +17,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/tableFilter"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/geo-tools"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/geoTools"/>
+	<classpathentry kind="src" path="/Depetro_Interface_WithGeotools"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
