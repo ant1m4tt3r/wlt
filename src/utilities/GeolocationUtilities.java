@@ -13,7 +13,6 @@ import beans.SamplingPoint;
  * 
  * @see Point
  * @see PontoDeAmostragem
- *
  */
 public class GeolocationUtilities {
 
