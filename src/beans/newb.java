@@ -5,9 +5,9 @@ public class newb {
   public newb() {
     
 
-    System.out.println("merda2");
+    System.out.println("merda3");
     
-    System.out.println("51515");
+    System.out.println("515156");
 
     System.out.println("tchau");
   }
