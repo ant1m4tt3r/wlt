@@ -24,7 +24,6 @@ public class SamplingPoint {
   private int versao;
   private Double analysisValue;
   private Double lq;
-  private int nada;
   private Double limit;
   private String operator;
 
