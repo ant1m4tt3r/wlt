@@ -33,7 +33,7 @@ import com.vividsolutions.jts.geom.Point;
 
 
 /**
- * This class is used for creating shape containing only points and the desiered parameters (name, color, value, etc.). The points can be selected by
+ * This class is used for creating shape containing only points and the desired parameters (name, color, value, etc.). The points can be selected by
  * creating a {@code LinkedHashMap<String, Object>} with the corresponding data of them.</br>
  * </br>
  * Eg.:</br>
@@ -67,7 +67,7 @@ public class ShapeUtilities {
     feature.put("x", -10.0);
     feature.put("y", -41.0);
     feature.put("name", "MG-01");
-    feature.put("parameter", "Antimônio");
+    feature.put("parameter", "Antimï¿½nio");
     feature.put("value", 5.5);
     list.add(feature);
 
@@ -75,7 +75,7 @@ public class ShapeUtilities {
     feature.put("x", -10.0);
     feature.put("y", -42.0);
     feature.put("name", "MG-02");
-    feature.put("parameter", "Antimônio");
+    feature.put("parameter", "Antimï¿½nio");
     feature.put("value", 4.2);
     list.add(feature);
 
@@ -83,7 +83,7 @@ public class ShapeUtilities {
     feature.put("x", -10.0);
     feature.put("y", -43.0);
     feature.put("name", "MG-03");
-    feature.put("parameter", "Antimônio");
+    feature.put("parameter", "Antimï¿½nio");
     feature.put("value", 4.2);
     list.add(feature);
 
@@ -91,7 +91,7 @@ public class ShapeUtilities {
     feature.put("x", -10.0);
     feature.put("y", -44.0);
     feature.put("name", "MG-04");
-    feature.put("parameter", "Antimônio");
+    feature.put("parameter", "Antimï¿½nio");
     feature.put("value", 4.2);
     list.add(feature);
 
@@ -99,7 +99,7 @@ public class ShapeUtilities {
     feature.put("x", -10.0);
     feature.put("y", -45.0);
     feature.put("name", "MG-05");
-    feature.put("parameter", "Antimônio");
+    feature.put("parameter", "Antimï¿½nio");
     feature.put("value", 4.2);
     list.add(feature);
 
@@ -107,7 +107,7 @@ public class ShapeUtilities {
     feature.put("x", -10.0);
     feature.put("y", -46.0);
     feature.put("name", "MG-06");
-    feature.put("parameter", "Antimônio");
+    feature.put("parameter", "Antimï¿½nio");
     feature.put("value", 4.2);
     list.add(feature);
 
@@ -115,7 +115,7 @@ public class ShapeUtilities {
     feature.put("x", -10.0);
     feature.put("y", -47.0);
     feature.put("name", "MG-07");
-    feature.put("parameter", "Antimônio");
+    feature.put("parameter", "Antimï¿½nio");
     feature.put("value", 4.2);
     list.add(feature);
 
