@@ -49,7 +49,7 @@ public class FileServices {
 
     int theByte = 0;
     while ((theByte = in.read()) != -1) {
-      // chamar o mÃ©todo update() para passar os dados a serem criptografados
+      // chamar o método update() para passar os dados a serem criptografados
       md.update((byte) theByte);
     }
     in.close();
@@ -570,7 +570,6 @@ public class FileServices {
   }
 
 
-  /***/
   public static final String extractExtension(String filename) throws Exception {
     initializeAllowedExtension();
 
@@ -586,7 +585,6 @@ public class FileServices {
   }
 
 
-  /***/
   public static final String extractMime(String filename) throws Exception {
     initializeAllowedExtension();
 

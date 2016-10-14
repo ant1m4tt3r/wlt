@@ -2,7 +2,7 @@ package constants;
 
 /**
  * <p>
- * This class contains all the error constants provided for the API. All of the sucurity check after parsing should use this constants for evaluation.
+ * This class contains all the error constants provided for the API. All of the security check after parsing should use this constants for evaluation.
  * <p>
  * Be careful when using the {@code ERROR_STRING} constant, it's a {@code String} with the "<Error>" value, so if your text or string contains this
  * data, remove or replace it before comparing.
