@@ -36,16 +36,16 @@ public class FileUtilities {
     DecimalFormat df = new DecimalFormat("0.00");
 
     float sizeKb = 1024.0f;
-    float sizeMo = sizeKb * sizeKb;
-    float sizeGo = sizeMo * sizeKb;
-    float sizeTerra = sizeGo * sizeKb;
+    float sizeMb = sizeKb * sizeKb;
+    float sizeGb = sizeMb * sizeKb;
+    float sizeTb = sizeGb * sizeKb;
 
-    if (size < sizeMo)
+    if (size < sizeMb)
       return df.format(size / sizeKb) + " KB";
-    else if (size < sizeGo)
-      return df.format(size / sizeMo) + " MB";
-    else if (size < sizeTerra)
-      return df.format(size / sizeGo) + " GB";
+    else if (size < sizeGb)
+      return df.format(size / sizeMb) + " MB";
+    else if (size < sizeTb)
+      return df.format(size / sizeGb) + " GB";
 
     return "";
   }
