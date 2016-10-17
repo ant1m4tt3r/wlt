@@ -1,5 +1,7 @@
 package handler.creator;
 
+import static utilities.HiberXUtilities.getGetMethod;
+import static utilities.HiberXUtilities.getSetMethod;
 import static utilities.StringUtilities.capitalize;
 import static utilities.StringUtilities.isJavaKeyword;
 import static utilities.StringUtilities.onlyNumbers;
@@ -82,17 +84,19 @@ public class BeanCreator {
     w.write("public class " + capitalize(name) + " {\n");
     w.write("\n");
     int size = titles.size();
+    
     // Cria as variáveis
     for (String t : titles) {
       progress = (100 * titles.indexOf(t)) / (size * 3);
       w.write(tab + "private String " + t + endLine);
     }
+
     w.write(lineSpace);
     w.write(tab + "/** Getters */\n");
     // Cria os Getters
     for (String t : titles) {
       progress = 33 + (100 * titles.indexOf(t)) / (size * 3);
-      w.write(getMethod(t));
+      w.write(getMethod(t.trim()));
     }
 
     w.write(lineSpace);
@@ -100,7 +104,7 @@ public class BeanCreator {
     // Cria os Setters
     for (String t : titles) {
       progress = 66 + (100 * titles.indexOf(t)) / (size * 3);
-      w.write(setMethod(t));
+      w.write(setMethod(t.trim()));
     }
 
     w.write("\n}");
@@ -118,8 +122,8 @@ public class BeanCreator {
    * @return
    */
   private static String getMethod(String t) {
-    String method = tab + "public String get" + capitalize(t.trim()) + "() {\n";
-    method += tab + tab + "return this." + t.trim() + endLine;
+    String method = tab + "public String " + getGetMethod(t) + "() {\n";
+    method += tab + tab + "return this." + t + endLine;
     method += tab + "}\n";
     return method;
   }
@@ -132,8 +136,8 @@ public class BeanCreator {
    * @return
    */
   private static String setMethod(String t) {
-    String method = tab + "public void set" + capitalize(t.trim()) + "(String " + t.trim() + ") {\n";
-    method += tab + tab + "this." + t.trim() + " = " + t.trim() + endLine;
+    String method = tab + "public void " + getSetMethod(t) + "(String " + t + ") {\n";
+    method += tab + tab + "this." + t + " = " + t + endLine;
     method += tab + "}\n";
     return method;
   }

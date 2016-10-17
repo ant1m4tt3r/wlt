@@ -17,10 +17,9 @@ public class StringUtilities {
   // TODO
   private static final String keywords[] = { "abstract", "assert", "boolean", "break", "byte", "case", "catch", "char", "class", "const", "continue", "default", "do", "double", "else", "extends", "false", "final", "finally", "float", "for", "goto", "if", "implements", "import", "instanceof", "int", "interface", "long", "native", "new", "null", "package", "private", "protected", "public", "return", "short", "static", "strictfp", "super", "switch", "synchronized", "this", "throw", "throws", "transient", "true", "try", "void", "volatile", "while" };
 
-  String oi = "oi";
   /**
    * 
-   * @return Retira as Tgs Html do texto
+   * @return Retira as Tags html do texto
    * 
    */
   public static String removeHTMLTags(String html) {
@@ -88,6 +87,16 @@ public class StringUtilities {
 
     return a;
   }
+  
+  /**
+   * Removes all special characters from the input <code>String</code> (no spaces);
+   * @see HiberXUtilities
+   * @param input
+   * @return string with no special characters.
+   */
+  public static final String removeSpecials(String input) {
+    return input.replaceAll("[^a-zA-Z0-9]+", "");
+  }
 
 
   /**
@@ -138,7 +147,7 @@ public class StringUtilities {
 
 
   /**
-   * Removes de scape character <code>\n</code> from the <code>String</code>
+   * Removes the scape character <code>\n</code> from the <code>String</code>
    */
   public static final String parseToString(String a) {
     if (a == null || a.isEmpty()) {
@@ -164,7 +173,7 @@ public class StringUtilities {
 
   /**
    * 
-   * @return Compra duas string retirando caracteres especiais e espaços
+   * @return Compara duas string retirando caracteres especiais e espaços
    * 
    */
   public static boolean comparaString(String a1, String a2) {

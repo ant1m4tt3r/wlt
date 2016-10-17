@@ -1,5 +1,6 @@
 package handler.creator;
 
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -15,6 +16,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
+import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileFilter;
@@ -38,7 +41,6 @@ public class CreatorView extends JFrame implements ActionListener, Progress {
   private int progress = 0;
 
   private final BeanCreator bc = new BeanCreator();
-//  private final JFrame f = new JFrame("Create Bean");
   JPanel p = new JPanel();
   JLabel xlsx;
   JLabel out;
@@ -52,7 +54,7 @@ public class CreatorView extends JFrame implements ActionListener, Progress {
   JLabel bar;
   JButton find;
 
-  // Thread para atualiza��o do label.
+  // Thread para atualição do label
   Thread t = new Thread(new Runnable() {
     @Override
     public void run() {
@@ -76,13 +78,13 @@ public class CreatorView extends JFrame implements ActionListener, Progress {
         new CreatorView();
       }
     });
+//    CreatorView cv = new CreatorView();
   }
 
 
   private CreatorView() {
     super("Create Bean");
-    
-//    addComps();
+    addComps();
     this.add(p);
     this.setResizable(false);
     this.setSize(270, 370);
@@ -137,7 +139,7 @@ public class CreatorView extends JFrame implements ActionListener, Progress {
     find.addActionListener(this);
     p.add(find, c);
 
-    c.insets = new Insets(2, 20, 2, 20);
+    c.insets = new Insets(2, 20, 10, 20);
     c.gridy++;
     c.gridwidth = 1;
     c.weightx = 50;
@@ -160,14 +162,20 @@ public class CreatorView extends JFrame implements ActionListener, Progress {
 
     c.gridy++;
     c.gridx = 0;
+    c.gridwidth = 2;
+    
+    JSeparator separator = new JSeparator();
+    separator.setBounds(1, exit.getHeight()+20, super.getWidth()-1, 1);
+    p.add(separator, c);
+    
+    c.gridy++;
     c.weightx = 0.1;
     c.weighty = 0.1;
-    c.gridwidth = 2;
     c.insets = new Insets(2, 10, 2, 10);
     c.anchor = GridBagConstraints.CENTER;
     c.fill = GridBagConstraints.HORIZONTAL;
 
-    URL imageURL = this.getClass().getResource(eclipseImagePath);
+    URL imageURL = getClass().getResource(eclipseImagePath);
     eclipse = new JLabel(new ImageIcon(imageURL));
     p.add(eclipse, c);
   }

@@ -1,12 +1,12 @@
 package handler.creator;
 
-import static utilities.StringUtilities.capitalize;
+import static utilities.HiberXUtilities.getSetMethod;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 /**
- * Incompleta!
+ * Incomplete!
  * 
  * @author hugo
  *
@@ -16,7 +16,7 @@ public class HiberX {
   private static final ClassLoader classLoader = HiberX.class.getClassLoader();
   
   /**
-   * This mehtod uses a reflection routine to create intances of the <code>classe</code> with the corresponding values.
+   * This method uses a reflection routine to create instances of the <code>class</code> with the corresponding values.
    * @param classe
    * @param titles
    * @param values
@@ -30,7 +30,7 @@ public class HiberX {
       for (int i = 0; i < titles.size(); i++) {
         if (titles.get(i) != null) {
           String title = titles.get(i);
-          loaded.getMethod("set" + capitalize(title), String.class).invoke(o, values.get(i));
+          loaded.getMethod(getSetMethod(title), String.class).invoke(o, values.get(i));
         }
       }
     }
