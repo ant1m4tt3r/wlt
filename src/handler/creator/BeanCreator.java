@@ -118,6 +118,7 @@ public class BeanCreator {
 
     w.flush();
     w.close();
+    System.out.println("fim");
     progress = 100;
   }
 
