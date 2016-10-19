@@ -47,7 +47,7 @@ public class Utilities {
 
 
   /**
-   * This method returns the List<String> without empty ou null values.
+   * This method returns the List<String> without empty or null values.
    * 
    * @param titles
    * @return

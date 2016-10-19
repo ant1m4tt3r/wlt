@@ -17,10 +17,9 @@ public class StringUtilities {
   // TODO
   private static final String keywords[] = { "abstract", "assert", "boolean", "break", "byte", "case", "catch", "char", "class", "const", "continue", "default", "do", "double", "else", "extends", "false", "final", "finally", "float", "for", "goto", "if", "implements", "import", "instanceof", "int", "interface", "long", "native", "new", "null", "package", "private", "protected", "public", "return", "short", "static", "strictfp", "super", "switch", "synchronized", "this", "throw", "throws", "transient", "true", "try", "void", "volatile", "while" };
 
-  String oi = "oi";
   /**
    * 
-   * @return Retira as Tgs Html do texto
+   * @return Retira as Tags html do texto
    * 
    */
   public static String removeHTMLTags(String html) {
@@ -44,49 +43,59 @@ public class StringUtilities {
    */
   public static String removeAccents(String a) {
     // Lower case
-    a = a.replaceAll("·", "a");
-    a = a.replaceAll("‡", "a");
-    a = a.replaceAll("‚", "a");
-    a = a.replaceAll("„", "a");
-    a = a.replaceAll("È", "e");
-    a = a.replaceAll("Ë", "e");
-    a = a.replaceAll("Í", "e");
-    a = a.replaceAll("Ì", "i");
-    a = a.replaceAll("Ï", "i");
-    a = a.replaceAll("Ó", "i");
-    a = a.replaceAll("Û", "o");
-    a = a.replaceAll("Ú", "o");
-    a = a.replaceAll("Ù", "o");
-    a = a.replaceAll("ı", "o");
-    a = a.replaceAll("˙", "u");
-    a = a.replaceAll("˘", "u");
-    a = a.replaceAll("˚", "u");
-    a = a.replaceAll("¸", "u");
-    a = a.replaceAll("Á", "c");
-    a = a.replaceAll("Ò", "n");
+    a = a.replaceAll("√°", "a");
+    a = a.replaceAll("√†", "a");
+    a = a.replaceAll("√¢", "a");
+    a = a.replaceAll("√£", "a");
+    a = a.replaceAll("√©", "e");
+    a = a.replaceAll("√®", "e");
+    a = a.replaceAll("√™", "e");
+    a = a.replaceAll("√≠", "i");
+    a = a.replaceAll("√¨", "i");
+    a = a.replaceAll("√Æ", "i");
+    a = a.replaceAll("√≥", "o");
+    a = a.replaceAll("√≤", "o");
+    a = a.replaceAll("√¥", "o");
+    a = a.replaceAll("√µ", "o");
+    a = a.replaceAll("√∫", "u");
+    a = a.replaceAll("√π", "u");
+    a = a.replaceAll("√ª", "u");
+    a = a.replaceAll("√º", "u");
+    a = a.replaceAll("√ß", "c");
+    a = a.replaceAll("√±", "n");
     // Upper case
-    a = a.replaceAll("¡", "A");
-    a = a.replaceAll("¿", "A");
-    a = a.replaceAll("¬", "A");
-    a = a.replaceAll("√", "A");
-    a = a.replaceAll("…", "E");
-    a = a.replaceAll("»", "E");
-    a = a.replaceAll(" ", "E");
-    a = a.replaceAll("Õ", "I");
-    a = a.replaceAll("Ã", "I");
-    a = a.replaceAll("Œ", "I");
-    a = a.replaceAll("”", "O");
-    a = a.replaceAll("“", "O");
-    a = a.replaceAll("‘", "O");
-    a = a.replaceAll("’", "O");
-    a = a.replaceAll("⁄", "U");
-    a = a.replaceAll("Ÿ", "U");
-    a = a.replaceAll("€", "U");
-    a = a.replaceAll("‹", "U");
-    a = a.replaceAll("«", "C");
-    a = a.replaceAll("—", "N");
+    a = a.replaceAll("√Å", "A");
+    a = a.replaceAll("√Ä", "A");
+    a = a.replaceAll("√Ç", "A");
+    a = a.replaceAll("√É", "A");
+    a = a.replaceAll("√â", "E");
+    a = a.replaceAll("√à", "E");
+    a = a.replaceAll("√ä", "E");
+    a = a.replaceAll("√ç", "I");
+    a = a.replaceAll("√å", "I");
+    a = a.replaceAll("√é", "I");
+    a = a.replaceAll("√ì", "O");
+    a = a.replaceAll("√í", "O");
+    a = a.replaceAll("√î", "O");
+    a = a.replaceAll("√ï", "O");
+    a = a.replaceAll("√ö", "U");
+    a = a.replaceAll("√ô", "U");
+    a = a.replaceAll("√õ", "U");
+    a = a.replaceAll("√ú", "U");
+    a = a.replaceAll("√á", "C");
+    a = a.replaceAll("√ë", "N");
 
     return a;
+  }
+  
+  /**
+   * Removes all special characters from the input <code>String</code> (no spaces);
+   * @see HiberXUtilities
+   * @param input
+   * @return string with no special characters.
+   */
+  public static final String removeSpecials(String input) {
+    return input.replaceAll("[^a-zA-Z0-9]+", "");
   }
 
 
@@ -99,7 +108,7 @@ public class StringUtilities {
     }
     a = a.toLowerCase();
     a = removeAccents(a);
-    a = a.replaceAll("∞", "");
+    a = a.replaceAll("¬∞", "");
     a = a.replaceAll("/", "");
     a = a.replaceAll("\n", "");
     a = a.replaceAll(" ", "");
@@ -138,7 +147,7 @@ public class StringUtilities {
 
 
   /**
-   * Removes de scape character <code>\n</code> from the <code>String</code>
+   * Removes the scape character <code>\n</code> from the <code>String</code>
    */
   public static final String parseToString(String a) {
     if (a == null || a.isEmpty()) {
@@ -164,7 +173,7 @@ public class StringUtilities {
 
   /**
    * 
-   * @return Compra duas string retirando caracteres especiais e espaÁos
+   * @return Compara duas string retirando caracteres especiais e espa√ßos
    * 
    */
   public static boolean comparaString(String a1, String a2) {
@@ -243,7 +252,7 @@ public class StringUtilities {
 
   public static final String dateToString(Date a) {
     if (a == ErrorConstants.ERROR_DATE)
-      return "Data inv·lida";
+      return "Data inv√°lida";
 
     if (a == null)
       return null;
@@ -299,124 +308,124 @@ public class StringUtilities {
     for (int i = 0; i < a.length(); i++) {
       c = a.charAt(i);
       switch (c) {
-        case '‡':
+        case '√†':
           s += "&agrave;";
           break;
-        case '·':
+        case '√°':
           s += "&aacute;";
           break;
-        case '‚':
+        case '√¢':
           s += "&acirc;";
           break;
-        case '„':
+        case '√£':
           s += "&atilde;";
           break;
-        case 'Á':
+        case '√ß':
           s += "&ccedil;";
           break;
-        case 'Ë':
+        case '√®':
           s += "&egrave;";
           break;
-        case 'È':
+        case '√©':
           s += "&eacute;";
           break;
-        case 'Í':
+        case '√™':
           s += "&ecirc;";
           break;
-        case 'Ï':
+        case '√¨':
           s += "&igrave;";
           break;
-        case 'Ì':
+        case '√≠':
           s += "&iacute;";
           break;
-        case 'Ó':
+        case '√Æ':
           s += "&icirc;";
           break;
-        case 'Ò':
+        case '√±':
           s += "&ntilde;";
           break;
-        case 'Ú':
+        case '√≤':
           s += "&ograve;";
           break;
-        case 'Û':
+        case '√≥':
           s += "&oacute;";
           break;
-        case 'Ù':
+        case '√¥':
           s += "&ocirc;";
           break;
-        case 'ı':
+        case '√µ':
           s += "&otilde;";
           break;
-        case '˘':
+        case '√π':
           s += "&ugrave;";
           break;
-        case '˙':
+        case '√∫':
           s += "&uacute;";
           break;
-        case '˚':
+        case '√ª':
           s += "&ucirc;";
           break;
-        case '¸':
+        case '√º':
           s += "&uuml;";
           break;
-        case '¿':
+        case '√Ä':
           s += "&Agrave;";
           break;
-        case '¡':
+        case '√Å':
           s += "&Aacute;";
           break;
-        case '¬':
+        case '√Ç':
           s += "&Acirc;";
           break;
-        case '√':
+        case '√É':
           s += "&Atilde;";
           break;
-        case '«':
+        case '√á':
           s += "&Ccedil;";
           break;
-        case '»':
+        case '√à':
           s += "&Egrave;";
           break;
-        case '…':
+        case '√â':
           s += "&Eacute;";
           break;
-        case 'Ã':
+        case '√å':
           s += "&Igrave;";
           break;
-        case 'Õ':
+        case '√ç':
           s += "&Iacute;";
           break;
-        case 'Œ':
+        case '√é':
           s += "&Icirc;";
           break;
-        case '—':
+        case '√ë':
           s += "&Ntilde;";
           break;
-        case '“':
+        case '√í':
           s += "&Ograve;";
           break;
-        case '”':
+        case '√ì':
           s += "&Oacute;";
           break;
-        case '‘':
+        case '√î':
           s += "&Ocirc;";
           break;
-        case '’':
+        case '√ï':
           s += "&Otilde;";
           break;
-        case 'Ÿ':
+        case '√ô':
           s += "&Ugrave;";
           break;
-        case '⁄':
+        case '√ö':
           s += "&Uacute;";
           break;
-        case '€':
+        case '√õ':
           s += "&Ucirc;";
           break;
-        case '‹':
+        case '√ú':
           s += "&Uuml;";
           break;
-        case ' ':
+        case '√ä':
           s += "&Ecirc;";
           break;
         case '<':
@@ -431,13 +440,13 @@ public class StringUtilities {
         case '"':
           s += "&quot;";
           break;
-        case '∞':
+        case '¬∞':
           s += "&deg;";
           break;
-        case '∫':
+        case '¬∫':
           s += "&ordm;";
           break;
-        case '™':
+        case '¬™':
           s += "&ordf;";
           break;
         default:
@@ -458,56 +467,56 @@ public class StringUtilities {
       return null;
     }
 
-    s = s.replace("&agrave;", "‡");
-    s = s.replace("&aacute;", "·");
-    s = s.replace("&acirc;", "‚");
-    s = s.replace("&atilde", "„");
+    s = s.replace("&agrave;", "√†");
+    s = s.replace("&aacute;", "√°");
+    s = s.replace("&acirc;", "√¢");
+    s = s.replace("&atilde", "√£");
 
-    s = s.replace("&Agrave;", "¿");
-    s = s.replace("&Aacute;", "¡");
-    s = s.replace("&Acirc;", "¬");
-    s = s.replace("&Atilde;", "√");
+    s = s.replace("&Agrave;", "√Ä");
+    s = s.replace("&Aacute;", "√Å");
+    s = s.replace("&Acirc;", "√Ç");
+    s = s.replace("&Atilde;", "√É");
 
-    s = s.replace("&ccedil;", "Á");
-    s = s.replace("&Ccedil;", "«");
+    s = s.replace("&ccedil;", "√ß");
+    s = s.replace("&Ccedil;", "√á");
 
-    s = s.replace("&egrave;", "Ë");
-    s = s.replace("&eacute;", "È");
-    s = s.replace("&ecirc;", "Í");
+    s = s.replace("&egrave;", "√®");
+    s = s.replace("&eacute;", "√©");
+    s = s.replace("&ecirc;", "√™");
 
-    s = s.replace("&Egrave;", "»");
-    s = s.replace("&Eacute;", "…");
-    s = s.replace("&Ecirc;", " ");
+    s = s.replace("&Egrave;", "√à");
+    s = s.replace("&Eacute;", "√â");
+    s = s.replace("&Ecirc;", "√ä");
 
-    s = s.replace("&igrave;", "Ï");
-    s = s.replace("&iacute;", "Ì");
-    s = s.replace("&icirc;", "Ó");
+    s = s.replace("&igrave;", "√¨");
+    s = s.replace("&iacute;", "√≠");
+    s = s.replace("&icirc;", "√Æ");
 
-    s = s.replace("&Igrave;", "Ã");
-    s = s.replace("&Iacute;", "Õ");
-    s = s.replace("&icirc;", "Œ");
+    s = s.replace("&Igrave;", "√å");
+    s = s.replace("&Iacute;", "√ç");
+    s = s.replace("&icirc;", "√é");
 
-    s = s.replace("&ntilde;", "Ò");
-    s = s.replace("&Ntilde;", "—");
+    s = s.replace("&ntilde;", "√±");
+    s = s.replace("&Ntilde;", "√ë");
 
-    s = s.replace("&ograve;", "Ú");
-    s = s.replace("&oacute;", "Û");
-    s = s.replace("&ocirc;", "Ù");
-    s = s.replace("&otilde;", "ı");
+    s = s.replace("&ograve;", "√≤");
+    s = s.replace("&oacute;", "√≥");
+    s = s.replace("&ocirc;", "√¥");
+    s = s.replace("&otilde;", "√µ");
 
-    s = s.replace("&Ograve;", "“");
-    s = s.replace("&Oacute;", "”");
-    s = s.replace("&Ocirc;", "‘");
-    s = s.replace("&Otilde;", "’");
+    s = s.replace("&Ograve;", "√í");
+    s = s.replace("&Oacute;", "√ì");
+    s = s.replace("&Ocirc;", "√î");
+    s = s.replace("&Otilde;", "√ï");
 
-    s = s.replace("&ugrave;", "˘");
-    s = s.replace("&uacute;", "˙");
-    s = s.replace("&ucirc;", "˚");
+    s = s.replace("&ugrave;", "√π");
+    s = s.replace("&uacute;", "√∫");
+    s = s.replace("&ucirc;", "√ª");
     s = s.replace("&uuml;", "u");
 
-    s = s.replace("&Ugrave;", "Ÿ");
-    s = s.replace("&Uacute;", "⁄");
-    s = s.replace("&Ucirc;", "€");
+    s = s.replace("&Ugrave;", "√ô");
+    s = s.replace("&Uacute;", "√ö");
+    s = s.replace("&Ucirc;", "√õ");
     s = s.replace("&Uuml;", "U");
 
     return s;
@@ -524,70 +533,70 @@ public class StringUtilities {
       return null;
     }
 
-    s = s.replace("&#192;", "¿");// Capital A, grave accent
-    s = s.replace("&#193;", "¡");// Capital A, acute accent
-    s = s.replace("&#194;", "¬");// Capital A, circumflex accent
-    s = s.replace("&#195;", "√");// Capital A, tilde
-    s = s.replace("&#196;", "ƒ");// Capital A, dieresis or umlaut mark
-    s = s.replace("&#197;", "≈");// Capital A, ring
-    s = s.replace("&#198;", "∆");// Capital AE dipthong (ligature)
-    s = s.replace("&#199;", "«");// Capital C, cedilla
-    s = s.replace("&#200;", "»");// Capital E, grave accent
-    s = s.replace("&#201;", "…");// Capital E, acute accent
-    s = s.replace("&#202;", " ");// Capital E, circumflex accent
-    s = s.replace("&#203;", "À");// Capital E, dieresis or umlaut mark
-    s = s.replace("&#204;", "Ã");// Capital I, grave accent
-    s = s.replace("&#205;", "Õ");// Capital I, acute accent
-    s = s.replace("&#206;", "Œ");// Capital I, circumflex accent
-    s = s.replace("&#207;", "œ");// Capital I, dieresis or umlaut mark
-    s = s.replace("&#208;", "–");// Capital Eth, Icelandic
-    s = s.replace("&#209;", "—");// Capital N, tilde
-    s = s.replace("&#210;", "“");// Capital O, grave accent
-    s = s.replace("&#211;", "”");// Capital O, acute accent
-    s = s.replace("&#212;", "‘");// Capital O, circumflex accent
-    s = s.replace("&#213;", "’");// Capital O, tilde
-    s = s.replace("&#214;", "÷");// Capital O, dieresis or umlaut mark
-    s = s.replace("&#215;", "◊");// Multiply sign
-    s = s.replace("&#216;", "ÿ");// Capital O, slash
-    s = s.replace("&#217;", "Ÿ");// Capital U, grave accent
-    s = s.replace("&#218;", "⁄");// Capital U, acute accent
-    s = s.replace("&#219;", "€");// Capital U, circumflex accent
-    s = s.replace("&#220;", "‹");// Capital U, dieresis or umlaut mark
-    s = s.replace("&#221;", "›");// Capital Y, acute accent
-    s = s.replace("&#222;", "ﬁ");// Capital THORN, Icelandic
-    s = s.replace("&#223;", "ﬂ");// Small sharp s, German (sz ligature)
-    s = s.replace("&#224;", "‡");// Small a, grave accent
-    s = s.replace("&#225;", "·");// Small a, acute accent
-    s = s.replace("&#226;", "‚");// Small a, circumflex accent
-    s = s.replace("&#227;", "„");// Small a, tilde
-    s = s.replace("&#228;", "‰");// Small a, dieresis or umlaut mark
-    s = s.replace("&#229;", "Â");// Small a, ring
-    s = s.replace("&#230;", "Ê");// Small ae dipthong (ligature)
-    s = s.replace("&#231;", "Á");// Small c, cedilla
-    s = s.replace("&#232;", "Ë");// Small e, grave accent
-    s = s.replace("&#233;", "È");// Small e, acute accent
-    s = s.replace("&#234;", "Í");// Small e, circumflex accent
-    s = s.replace("&#235;", "Î");// Small e, dieresis or umlaut mark
-    s = s.replace("&#236;", "Ï");// Small i, grave accent
-    s = s.replace("&#237;", "Ì");// Small i, acute accent
-    s = s.replace("&#238;", "Ó");// Small i, circumflex accent
-    s = s.replace("&#239;", "Ô");// Small i, dieresis or umlaut mark
-    s = s.replace("&#240;", "");// Small eth, Icelandic
-    s = s.replace("&#241;", "Ò");// Small n, tilde
-    s = s.replace("&#242;", "Ú");// Small o, grave accent
-    s = s.replace("&#243;", "Û");// Small o, acute accent
-    s = s.replace("&#244;", "Ù");// Small o, circumflex accent
-    s = s.replace("&#245;", "ı");// Small o, tilde
-    s = s.replace("&#246;", "ˆ");// Small o, dieresis or umlaut mark
-    s = s.replace("&#247;", "˜");// Division sign
-    s = s.replace("&#248;", "¯");// Small o, slash
-    s = s.replace("&#249;", "˘");// Small u, grave accent
-    s = s.replace("&#250;", "˙");// Small u, acute accent
-    s = s.replace("&#251;", "˚");// Small u, circumflex accent
-    s = s.replace("&#252;", "¸");// Small u, dieresis or umlaut mark
-    s = s.replace("&#253;", "˝");// Small y, acute accent
-    s = s.replace("&#254;", "˛");// Small thorn, Icelandic
-    s = s.replace("&#255;", "ˇ");// Small y, dieresis or umlaut mark
+    s = s.replace("&#192;", "√Ä");// Capital A, grave accent
+    s = s.replace("&#193;", "√Å");// Capital A, acute accent
+    s = s.replace("&#194;", "√Ç");// Capital A, circumflex accent
+    s = s.replace("&#195;", "√É");// Capital A, tilde
+    s = s.replace("&#196;", "√Ñ");// Capital A, dieresis or umlaut mark
+    s = s.replace("&#197;", "√Ö");// Capital A, ring
+    s = s.replace("&#198;", "√Ü");// Capital AE dipthong (ligature)
+    s = s.replace("&#199;", "√á");// Capital C, cedilla
+    s = s.replace("&#200;", "√à");// Capital E, grave accent
+    s = s.replace("&#201;", "√â");// Capital E, acute accent
+    s = s.replace("&#202;", "√ä");// Capital E, circumflex accent
+    s = s.replace("&#203;", "√ã");// Capital E, dieresis or umlaut mark
+    s = s.replace("&#204;", "√å");// Capital I, grave accent
+    s = s.replace("&#205;", "√ç");// Capital I, acute accent
+    s = s.replace("&#206;", "√é");// Capital I, circumflex accent
+    s = s.replace("&#207;", "√è");// Capital I, dieresis or umlaut mark
+    s = s.replace("&#208;", "√ê");// Capital Eth, Icelandic
+    s = s.replace("&#209;", "√ë");// Capital N, tilde
+    s = s.replace("&#210;", "√í");// Capital O, grave accent
+    s = s.replace("&#211;", "√ì");// Capital O, acute accent
+    s = s.replace("&#212;", "√î");// Capital O, circumflex accent
+    s = s.replace("&#213;", "√ï");// Capital O, tilde
+    s = s.replace("&#214;", "√ñ");// Capital O, dieresis or umlaut mark
+    s = s.replace("&#215;", "√ó");// Multiply sign
+    s = s.replace("&#216;", "√ò");// Capital O, slash
+    s = s.replace("&#217;", "√ô");// Capital U, grave accent
+    s = s.replace("&#218;", "√ö");// Capital U, acute accent
+    s = s.replace("&#219;", "√õ");// Capital U, circumflex accent
+    s = s.replace("&#220;", "√ú");// Capital U, dieresis or umlaut mark
+    s = s.replace("&#221;", "√ù");// Capital Y, acute accent
+    s = s.replace("&#222;", "√û");// Capital THORN, Icelandic
+    s = s.replace("&#223;", "√ü");// Small sharp s, German (sz ligature)
+    s = s.replace("&#224;", "√†");// Small a, grave accent
+    s = s.replace("&#225;", "√°");// Small a, acute accent
+    s = s.replace("&#226;", "√¢");// Small a, circumflex accent
+    s = s.replace("&#227;", "√£");// Small a, tilde
+    s = s.replace("&#228;", "√§");// Small a, dieresis or umlaut mark
+    s = s.replace("&#229;", "√•");// Small a, ring
+    s = s.replace("&#230;", "√¶");// Small ae dipthong (ligature)
+    s = s.replace("&#231;", "√ß");// Small c, cedilla
+    s = s.replace("&#232;", "√®");// Small e, grave accent
+    s = s.replace("&#233;", "√©");// Small e, acute accent
+    s = s.replace("&#234;", "√™");// Small e, circumflex accent
+    s = s.replace("&#235;", "√´");// Small e, dieresis or umlaut mark
+    s = s.replace("&#236;", "√¨");// Small i, grave accent
+    s = s.replace("&#237;", "√≠");// Small i, acute accent
+    s = s.replace("&#238;", "√Æ");// Small i, circumflex accent
+    s = s.replace("&#239;", "√Ø");// Small i, dieresis or umlaut mark
+    s = s.replace("&#240;", "√∞");// Small eth, Icelandic
+    s = s.replace("&#241;", "√±");// Small n, tilde
+    s = s.replace("&#242;", "√≤");// Small o, grave accent
+    s = s.replace("&#243;", "√≥");// Small o, acute accent
+    s = s.replace("&#244;", "√¥");// Small o, circumflex accent
+    s = s.replace("&#245;", "√µ");// Small o, tilde
+    s = s.replace("&#246;", "√∂");// Small o, dieresis or umlaut mark
+    s = s.replace("&#247;", "√∑");// Division sign
+    s = s.replace("&#248;", "√∏");// Small o, slash
+    s = s.replace("&#249;", "√π");// Small u, grave accent
+    s = s.replace("&#250;", "√∫");// Small u, acute accent
+    s = s.replace("&#251;", "√ª");// Small u, circumflex accent
+    s = s.replace("&#252;", "√º");// Small u, dieresis or umlaut mark
+    s = s.replace("&#253;", "√Ω");// Small y, acute accent
+    s = s.replace("&#254;", "√æ");// Small thorn, Icelandic
+    s = s.replace("&#255;", "√ø");// Small y, dieresis or umlaut mark
 
     return s;
 

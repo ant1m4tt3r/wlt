@@ -1,32 +1,50 @@
 package handler.creator;
 
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.net.URL;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
+import javax.swing.JSeparator;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import components.progress.Progress;
 import utilities.Utilities;
 
-public class CreatorView implements ActionListener, Progress {
+public class CreatorView extends JFrame implements ActionListener, Progress {
 
-  BeanCreator bc = new BeanCreator();
-  JFrame f = new JFrame("Create Bean");
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 4052053560840587805L;
+  private static final String ACTION_OK = "Ok";
+  private static final String ACTION_EXIT = "Exit";
+  private static final String ACTION_CHOOSE = "Find";
+
+  private final String eclipseImagePath = "/resources/img/eclipse.png";
+
+  private int progress = 0;
+
+  private final BeanCreator bc = new BeanCreator();
   JPanel p = new JPanel();
   JLabel xlsx;
   JLabel out;
+  JLabel eclipse;
   JTextField excel;
   JTextField java;
   JTextField focused;
@@ -34,29 +52,132 @@ public class CreatorView implements ActionListener, Progress {
   JButton exit;
   JFileChooser chooser;
   JLabel bar;
-  JButton ch;
+  JButton find;
 
-  int progress = 0;
-
-  private static final String ACTION_OK = "Ok";
-  private static final String ACTION_EXIT = "Exit";
-  private static final String ACTION_CHOOSE = "Find";
-
-
-  @Override
-  public void actionPerformed(ActionEvent e) {
-    switch (e.getActionCommand()) {
-      case ACTION_OK:
-        if (validate())
-          bc.createBean(excel.getText(), java.getText());
-        break;
-      case ACTION_EXIT:
-        System.exit(0);
-        break;
-      case ACTION_CHOOSE:
-        showChooser();
-        break;
+  // Thread para atualição do label
+  Thread t = new Thread(new Runnable() {
+    @Override
+    public void run() {
+      try {
+        while (true) {
+          Thread.sleep(100);
+          bar.setText(getProgressName());
+        }
+      }
+      catch (Exception e) {
+        e.printStackTrace();
+      }
     }
+  });;
+
+
+  public static void main(String[] args) {
+    SwingUtilities.invokeLater(new Runnable() {
+      @Override
+      public void run() {
+        new CreatorView();
+      }
+    });
+//    CreatorView cv = new CreatorView();
+  }
+
+
+  private CreatorView() {
+    super("Create Bean");
+    addComps();
+    this.add(p);
+    this.setResizable(false);
+    this.setSize(270, 370);
+    Utilities.centralizarComponente(this);
+    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    this.setVisible(true);
+  }
+
+
+  private void addComps() {
+    p.setLayout(new GridBagLayout());
+    GridBagConstraints c = new GridBagConstraints();
+    c.fill = GridBagConstraints.HORIZONTAL;
+    c.insets = new Insets(20, 20, 2, 20);
+    c.gridx = 0;
+    c.gridy = 0;
+
+    xlsx = new JLabel("Excel file");
+    p.add(xlsx, c);
+
+    c.insets = new Insets(2, 20, 2, 20);
+    c.gridwidth = 2;
+    c.gridy++;
+
+    excel = new JTextField();
+    p.add(excel, c);
+
+    c.gridy++;
+
+    out = new JLabel("Java file");
+    p.add(out, c);
+
+    c.gridy++;
+
+    java = new JTextField();
+    p.add(java, c);
+
+    c.gridy++;
+    c.insets = new Insets(30, 20, 2, 20);
+    c.anchor = GridBagConstraints.CENTER;
+    c.fill = GridBagConstraints.HORIZONTAL;
+
+    bar = new JLabel();
+    p.add(bar, c);
+
+    c.gridy++;
+    c.insets = new Insets(2, 20, 2, 20);
+
+    find = new JButton();
+    find.setText(ACTION_CHOOSE);
+    find.setActionCommand(ACTION_CHOOSE);
+    find.addActionListener(this);
+    p.add(find, c);
+
+    c.insets = new Insets(2, 20, 10, 20);
+    c.gridy++;
+    c.gridwidth = 1;
+    c.weightx = 50;
+    c.fill = GridBagConstraints.HORIZONTAL;
+    c.anchor = GridBagConstraints.WEST;
+
+    ok = new JButton();
+    ok.setText(ACTION_OK);
+    ok.setActionCommand(ACTION_OK);
+    ok.addActionListener(this);
+    p.add(ok, c);
+
+    c.gridx++;
+
+    exit = new JButton();
+    exit.setText(ACTION_EXIT);
+    exit.setActionCommand(ACTION_EXIT);
+    exit.addActionListener(this);
+    p.add(exit, c);
+
+    c.gridy++;
+    c.gridx = 0;
+    c.gridwidth = 2;
+    
+    JSeparator separator = new JSeparator();
+    separator.setBounds(1, exit.getHeight()+20, super.getWidth()-1, 1);
+    p.add(separator, c);
+    
+    c.gridy++;
+    c.weightx = 0.1;
+    c.weighty = 0.1;
+    c.insets = new Insets(2, 10, 2, 10);
+    c.anchor = GridBagConstraints.CENTER;
+    c.fill = GridBagConstraints.HORIZONTAL;
+
+    URL imageURL = getClass().getResource(eclipseImagePath);
+    eclipse = new JLabel(new ImageIcon(imageURL));
+    p.add(eclipse, c);
   }
 
 
@@ -76,7 +197,7 @@ public class CreatorView implements ActionListener, Progress {
   }
 
 
-  private boolean validate() {
+  private boolean verify() {
     if (excel.getText().isEmpty() || java.getText().isEmpty()) {
       JOptionPane.showMessageDialog(null, "Fill both camp.");
       return false;
@@ -85,101 +206,22 @@ public class CreatorView implements ActionListener, Progress {
   }
 
 
-  public static void main(String[] args) {
-    CreatorView v = new CreatorView();
-    v.mainScreen();
-  }
-
-
-  private void mainScreen() {
-    addComps();
-    f.add(p);
-    f.setResizable(false);
-    f.setSize(250, 350);
-    Utilities.centralizarComponente(f);
-    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    f.setVisible(true);
-  }
-
-
-  private void addComps() {
-    p.setLayout(new GridBagLayout());
-    GridBagConstraints c = new GridBagConstraints();
-    c.fill = GridBagConstraints.HORIZONTAL;
-    c.insets = new Insets(2, 10, 2, 10);
-    c.gridx = 0;
-    c.gridy = 0;
-
-    xlsx = new JLabel("Excel file");
-    p.add(xlsx, c);
-
-    c.gridwidth = 2;
-    c.gridy++;
-
-    excel = new JTextField();
-    p.add(excel, c);
-
-    c.gridy++;
-
-    out = new JLabel("Java file");
-    p.add(out, c);
-
-    c.gridy++;
-
-    java = new JTextField();
-    p.add(java, c);
-
-    c.gridy++;
-
-    ch = new JButton();
-    ch.setText(ACTION_CHOOSE);
-    ch.setActionCommand(ACTION_CHOOSE);
-    ch.addActionListener(this);
-    p.add(ch, c);
-
-    c.insets = new Insets(75, 10, 2, 10);
-    c.anchor = GridBagConstraints.CENTER;
-
-    bar = new JLabel();
-
-    { // Thread para atualização do Label.
-      new Thread(new Runnable() {
-        @Override
-        public void run() {
-          try {
-            while (true) {
-              Thread.sleep(100);
-              bar.setText(getProgressName());
-            }
-          }
-          catch (Exception e) {
-            e.printStackTrace();
-          }
+  @Override
+  public void actionPerformed(ActionEvent e) {
+    switch (e.getActionCommand()) {
+      case ACTION_OK:
+        if (verify()) {
+          t.start();
+          bc.createBean(excel.getText(), java.getText());
         }
-      }).start();
+        break;
+      case ACTION_EXIT:
+        System.exit(0);
+        break;
+      case ACTION_CHOOSE:
+        showChooser();
+        break;
     }
-
-    p.add(bar, c);
-
-    c.insets = new Insets(2, 10, 2, 10);
-    c.gridy++;
-    c.gridwidth = 1;
-    c.fill = GridBagConstraints.HORIZONTAL;
-    c.anchor = GridBagConstraints.WEST;
-
-    ok = new JButton();
-    ok.setText(ACTION_OK);
-    ok.setActionCommand(ACTION_OK);
-    ok.addActionListener(this);
-    p.add(ok, c);
-
-    c.gridx++;
-
-    exit = new JButton();
-    exit.setText(ACTION_EXIT);
-    exit.setActionCommand(ACTION_EXIT);
-    exit.addActionListener(this);
-    p.add(exit, c);
   }
 
 
