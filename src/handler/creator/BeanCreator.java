@@ -68,12 +68,13 @@ public class BeanCreator {
   }
 
 
+
   /**
    * This method creates the bean
    * 
-   * @param xlsx
+   * @param name
    *          table (first sheet)
-   * @param saida
+   * @param path
    *          .java file (bean)
    */
   private static void writeClass(String name, String path, List<String> titles) throws IOException {
@@ -84,12 +85,18 @@ public class BeanCreator {
     w.write("public class " + capitalize(name) + " {\n");
     w.write("\n");
     int size = titles.size();
-    
+
     // Cria as variáveis
     for (String t : titles) {
       progress = (100 * titles.indexOf(t)) / (size * 3);
       w.write(tab + "private String " + t + endLine);
     }
+    
+    w.write(lineSpace);
+    w.write(tab + "/** Private constructor */\n");
+    // Cria o constutor privado
+    w.write(tab + "private " + capitalize(name) + "{\n");
+    w.write(tab + "}\n");
 
     w.write(lineSpace);
     w.write(tab + "/** Getters */\n");

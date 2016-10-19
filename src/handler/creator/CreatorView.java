@@ -1,6 +1,5 @@
 package handler.creator;
 
-import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -16,7 +15,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollBar;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
@@ -36,6 +34,7 @@ public class CreatorView extends JFrame implements ActionListener, Progress {
   private static final String ACTION_EXIT = "Exit";
   private static final String ACTION_CHOOSE = "Find";
 
+  
   private final String eclipseImagePath = "/resources/img/eclipse.png";
 
   private int progress = 0;
@@ -54,7 +53,7 @@ public class CreatorView extends JFrame implements ActionListener, Progress {
   JLabel bar;
   JButton find;
 
-  // Thread para atualição do label
+  // Thread para atualização do label
   Thread t = new Thread(new Runnable() {
     @Override
     public void run() {
@@ -78,7 +77,6 @@ public class CreatorView extends JFrame implements ActionListener, Progress {
         new CreatorView();
       }
     });
-//    CreatorView cv = new CreatorView();
   }
 
 

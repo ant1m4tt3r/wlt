@@ -6,11 +6,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/apachepoi2"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/fgutils"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/swingx"/>
@@ -18,5 +13,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/geo-tools"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/geoTools"/>
 	<classpathentry kind="lib" path="C:/Workspace/Blibliotecas/lib/tableFilter/tablefilter-swing-5.2.1.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
