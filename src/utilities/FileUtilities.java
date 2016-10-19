@@ -1,9 +1,16 @@
 package utilities;
 
+import java.awt.AWTException;
 import java.awt.Desktop;
+import java.awt.Rectangle;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.text.DecimalFormat;
+
+import javax.imageio.ImageIO;
 
 import services.FileServices;
 
@@ -71,8 +78,16 @@ public class FileUtilities {
   }
 
 
-  private static void runFile(File file) throws IOException {
+  public static void runFile(File file) throws IOException {
     Desktop.getDesktop().open(file);
+  }
+
+
+  public static void printScreen(String path) throws IOException, AWTException {
+    Robot r = new Robot();
+    Rectangle rect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
+    BufferedImage i = r.createScreenCapture(rect);
+    ImageIO.write(i, "PNG", new File(path));
   }
 
 }

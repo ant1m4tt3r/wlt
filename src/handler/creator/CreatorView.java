@@ -34,7 +34,6 @@ public class CreatorView extends JFrame implements ActionListener, Progress {
   private static final String ACTION_EXIT = "Exit";
   private static final String ACTION_CHOOSE = "Find";
 
-  
   private final String eclipseImagePath = "/resources/img/eclipse.png";
 
   private int progress = 0;
@@ -161,11 +160,11 @@ public class CreatorView extends JFrame implements ActionListener, Progress {
     c.gridy++;
     c.gridx = 0;
     c.gridwidth = 2;
-    
+
     JSeparator separator = new JSeparator();
-    separator.setBounds(1, exit.getHeight()+20, super.getWidth()-1, 1);
+    separator.setBounds(1, exit.getHeight() + 20, super.getWidth() - 1, 1);
     p.add(separator, c);
-    
+
     c.gridy++;
     c.weightx = 0.1;
     c.weighty = 0.1;
