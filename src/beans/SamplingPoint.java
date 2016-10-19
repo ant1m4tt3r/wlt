@@ -9,7 +9,7 @@ public class SamplingPoint {
   private String nome;
   private String cidade;
   private String estado;
-  private String color = "gray";
+  private String color = "yellow";
   // X
   private Double latitude;
   // Y
