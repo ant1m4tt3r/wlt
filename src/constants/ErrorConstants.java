@@ -13,6 +13,9 @@ package constants;
 public class ErrorConstants {
 
   // Parse Error constants
+  /**
+   * <code>ERROR_DATE</code> it's used for parsing dates and avoiding {@code NullPointerException}.
+   */
   public static final java.util.Date ERROR_DATE = new java.util.Date(0L);
   public static final double ERROR_DOUBLE = -999999999D;
   public static final int ERROR_INTEGER = -999999999;

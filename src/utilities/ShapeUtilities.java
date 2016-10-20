@@ -31,7 +31,6 @@ import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.Point;
 
-
 /**
  * This class is used for creating shape containing only points and the desired parameters (name, color, value, etc.). The points can be selected by
  * creating a {@code LinkedHashMap<String, Object>} with the corresponding data of them.</br>
@@ -50,10 +49,18 @@ import com.vividsolutions.jts.geom.Point;
  * {@code list.add(Point2);}</br>
  * {@code list.add(Point3);}</br>
  * {@code list.add(Point4);}</br>
- * {@code list.add(Point5);}</br> * 
+ * {@code list.add(Point5);}</br>
+ * *
  *
  */
 public class ShapeUtilities {
+
+  /**
+   * Private constructor, no one can instantiate this class.
+   */
+  private ShapeUtilities() {
+  }
+
 
   /**
    * Exemple case.
@@ -134,7 +141,7 @@ public class ShapeUtilities {
    * @throws SchemaException
    * @throws IOException
    */
-  public void writePointShape1(String fileOut, Map<String, Object> featureList) throws NullPointerException,SchemaException, IOException {
+  public void writePointShape1(String fileOut, Map<String, Object> featureList) throws NullPointerException, SchemaException, IOException {
     List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
     list.add(featureList);
     writePointShape(fileOut, list);
@@ -196,13 +203,12 @@ public class ShapeUtilities {
       if (!(map.keySet().contains("x") || map.keySet().contains("X")) || !(map.keySet().contains("y") || map.keySet().contains("Y")))
         throw new NullPointerException("'x' or 'y' values not found.");
 
-      Object x = map.get("x") == null ? map.get("X") : map.get("x"); //Longitude
-      Object y = map.get("y") == null ? map.get("Y") : map.get("y"); //Latitude
-      
+      Object x = map.get("x") == null ? map.get("X") : map.get("x"); // Longitude
+      Object y = map.get("y") == null ? map.get("Y") : map.get("y"); // Latitude
 
       if (!(x instanceof Double) || !(y instanceof Double))
         throw new ClassCastException("'x' and 'y' values should be represented as double or Double inputs");
-      
+
       Point point = geometryFactory.createPoint(new Coordinate((double) x, (double) y));
       SimpleFeatureBuilder featureBuilder = new SimpleFeatureBuilder(TYPE);
       featureBuilder.add(point);
@@ -282,7 +288,6 @@ public class ShapeUtilities {
     return (ShapefileDataStore) dataStoreFactory.createNewDataStore(params);
 
   }
-
 
 
   public Geometry searchAttribute(SimpleFeatureSource layer, String attributeName, String attributeValue) {

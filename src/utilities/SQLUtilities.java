@@ -7,8 +7,14 @@ import java.util.Locale;
 
 import constants.ErrorConstants;
 
-
 public class SQLUtilities {
+
+  /**
+   * Private constructor, no one can instantiate this class.
+   */
+  private SQLUtilities() {
+  }
+
 
   /**
    * @return "yyyy-MM-dd HH:mm:ss"
@@ -19,6 +25,7 @@ public class SQLUtilities {
     return date;
 
   }
+
 
   /***/
   public static final String valueToSQL(String a) {

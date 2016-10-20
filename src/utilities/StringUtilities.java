@@ -14,12 +14,33 @@ import constants.ErrorConstants;
  */
 public class StringUtilities {
 
-  // TODO
+  /**
+   * This <code>String[]</code> contains all java keywords.
+   */
   private static final String keywords[] = { "abstract", "assert", "boolean", "break", "byte", "case", "catch", "char", "class", "const", "continue", "default", "do", "double", "else", "extends", "false", "final", "finally", "float", "for", "goto", "if", "implements", "import", "instanceof", "int", "interface", "long", "native", "new", "null", "package", "private", "protected", "public", "return", "short", "static", "strictfp", "super", "switch", "synchronized", "this", "throw", "throws", "transient", "true", "try", "void", "volatile", "while" };
 
+
   /**
+   * Private constructor, no one can instantiate this class.
+   */
+  private StringUtilities() {
+  }
+
+
+  /**
+   * Returns an <code>String[]</code> containing all java keywords.
    * 
-   * @return Retira as Tags html do texto
+   * @return an <code>String[]</code> with all java keywords.
+   */
+  public static final String[] getKeywords() {
+    return keywords;
+  }
+
+
+  /**
+   * Removes all html tags from the <code>String html</code>.
+   * 
+   * @return A {@code String} without any html tag.
    * 
    */
   public static String removeHTMLTags(String html) {
@@ -87,9 +108,11 @@ public class StringUtilities {
 
     return a;
   }
-  
+
+
   /**
    * Removes all special characters from the input <code>String</code> (no spaces);
+   * 
    * @see HiberXUtilities
    * @param input
    * @return string with no special characters.
@@ -147,7 +170,7 @@ public class StringUtilities {
 
 
   /**
-   * Removes the scape character <code>\n</code> from the <code>String</code>
+   * Removes the escape character <code>\n</code> from the <code>String</code>
    */
   public static final String parseToString(String a) {
     if (a == null || a.isEmpty()) {
@@ -172,8 +195,9 @@ public class StringUtilities {
 
 
   /**
+   * Compares <code>a1</code> and <code>a2</code> without considering special characters or spaces.
    * 
-   * @return Compara duas string retirando caracteres especiais e espaços
+   * @return <code>true</code> if a1 matches a2. <code>false</code> otherwise.
    * 
    */
   public static boolean comparaString(String a1, String a2) {
@@ -195,7 +219,7 @@ public class StringUtilities {
    */
   public static String capitalize(String t) {
     if (t == null || t.isEmpty())
-      return null;
+      return t;
     char[] array = t.toCharArray();
     array[0] = t.substring(0, 1).toUpperCase().charAt(0);
     return new String(array);
@@ -295,6 +319,7 @@ public class StringUtilities {
   // UTF Utilities
   /**
    * Changes all the special characters of the <code>String</code> by the corresponding UTF8 escape characters
+   * 
    * @param a
    * @return
    */
@@ -457,8 +482,11 @@ public class StringUtilities {
     return s;
   }
 
+
   /**
-   * Changes all the special characters of the <code>String</code> by the corresponding UTF8 desescape characters (reverse of <code>escapeUTF8()</code>)
+   * Changes all the special characters of the <code>String s</code> by the corresponding UTF8 escape characters (reverse of
+   * <code>escapeUTF8()</code>)
+   * 
    * @param a
    * @return
    */
@@ -522,8 +550,10 @@ public class StringUtilities {
     return s;
   }
 
+
   /**
-   * Changes all the special characters of the <code>String</code> by the corresponding ISO desescape characters
+   * Changes all the special characters of the <code>String</code> by the corresponding ISO escape characters
+   * 
    * @param a
    * @return
    */

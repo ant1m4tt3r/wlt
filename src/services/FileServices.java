@@ -42,14 +42,13 @@ public class FileServices {
 
 
   public static String generateMD5(File file) throws Exception {
-
     MessageDigest md = MessageDigest.getInstance("MD5");
     BufferedInputStream in = new BufferedInputStream(new FileInputStream(file));
     StringBuilder hexFileCSV = new StringBuilder();
 
     int theByte = 0;
     while ((theByte = in.read()) != -1) {
-      // chamar o método update() para passar os dados a serem criptografados
+      // chamar o mï¿½todo update() para passar os dados a serem criptografados
       md.update((byte) theByte);
     }
     in.close();
@@ -114,7 +113,6 @@ public class FileServices {
   /***/
   public static final boolean directoryExists(String a) throws Exception {
     File f = new File(a);
-
     return f.isDirectory();
   }
 
@@ -134,12 +132,10 @@ public class FileServices {
 
 
   /***/
-  public static final void createDirectoryAll(String a) throws Exception {
-
+  public static final void createDirectoryAll(String a) {
     File f = new File(a);
     if (!f.exists())
       f.mkdirs();
-
   }
 
 
@@ -189,7 +185,7 @@ public class FileServices {
     }
 
     if (!oldFile.renameTo(newFile)) {
-      throw new Exception("Falha ao renomear o diretï¿½rio!");
+      throw new Exception("Falha ao renomear o diretÃ³rio!");
     }
   }
 
@@ -386,7 +382,6 @@ public class FileServices {
     if (recursive) {
       for (String filename : filenames) {
         file = new File(directoryFile, filename);
-
         if (file.exists() && file.isDirectory()) {
           files.addAll(listFiles(file, recursive));
         }

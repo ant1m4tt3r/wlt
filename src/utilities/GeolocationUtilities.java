@@ -9,18 +9,19 @@ import beans.Point;
 import beans.SamplingPoint;
 
 /**
- * This class provides simple static methods for geolocation data conversion
+ * This class provides simple static methods for geolocation data conversion.
  * 
  * @see Point
  * @see PontoDeAmostragem
  */
 public class GeolocationUtilities {
-  
+
   /**
    * Private constructor, no one can instantiate this class.
    */
   private GeolocationUtilities() {
   }
+
 
   public static Point convertPointToLatLong(Point point, int zone) throws Exception {
     char letter;
@@ -58,8 +59,10 @@ public class GeolocationUtilities {
     return point;
   }
 
+
   /**
    * Defines de letter for UTM conversion.
+   * 
    * @param letter
    * @return
    * @throws Exception
@@ -73,11 +76,13 @@ public class GeolocationUtilities {
 
   }
 
-/**
- * Convert meridian to zone.
- * @param meridian
- * @return
- */
+
+  /**
+   * Convert meridian to zone.
+   * 
+   * @param meridian
+   * @return
+   */
   public static int convertMeridianToZone(String meridian) {
     Integer meridianInt = Integer.parseInt(meridian);
     Integer zone = 1 + (meridianInt + 177) / 6;

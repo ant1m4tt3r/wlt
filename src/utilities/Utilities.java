@@ -23,6 +23,13 @@ public class Utilities {
   // General Utilities
 
   /**
+   * Private constructor, no one can instantiate this class.
+   */
+  private Utilities() {
+  }
+
+
+  /**
    * 
    * @param input
    * @return String containing the md5 of the <code>input</code>

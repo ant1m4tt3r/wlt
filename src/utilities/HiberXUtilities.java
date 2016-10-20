@@ -6,6 +6,13 @@ import static utilities.StringUtilities.formatStringLowerNoSpace;
 public class HiberXUtilities {
 
   /**
+   * Private constructor, no one can instantiate this class.
+   */
+  private HiberXUtilities() {
+  }
+
+
+  /**
    * 
    * @param name
    * @return the name of the Set Method corresponding to the name and following the lowerCamelCase convention.
