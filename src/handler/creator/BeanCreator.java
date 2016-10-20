@@ -2,12 +2,11 @@ package handler.creator;
 
 import static utilities.HiberXUtilities.getGetMethod;
 import static utilities.HiberXUtilities.getSetMethod;
-import static utilities.StringUtilities.capitalize;
+import static utilities.HiberXUtilities.getName;
 import static utilities.StringUtilities.isJavaKeyword;
 import static utilities.StringUtilities.onlyNumbers;
 import static utilities.StringUtilities.startsWithNumber;
 import static utilities.StringUtilities.verifySpecials;
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -17,7 +16,7 @@ import java.util.List;
 import handler.SheetHandler;
 
 /**
- * This class is used for creating a bean by using the titles of a table.
+ * This class is used for creating a bean using the titles of a table.
  * 
  * @author hugo
  *
@@ -58,15 +57,13 @@ public class BeanCreator {
         System.err.println("Títulos inválidos");
         return;
       }
-      String name = handler.getFile();
-      writeClass(name.substring(name.lastIndexOf("\\") + 1, name.lastIndexOf(".")), saida, titles);
+      writeClass(getName(handler.getFile()), saida, titles);
     }
     catch (Exception e) {
       e.printStackTrace();
     }
 
   }
-
 
 
   /**
@@ -82,33 +79,33 @@ public class BeanCreator {
     BufferedWriter w = new BufferedWriter(new FileWriter(out));
     w.write(getPackage());
     w.write("\n");
-    w.write("public class " + capitalize(name) + " {\n");
+    w.write("public class " + name + " {\n");
     w.write("\n");
     int size = titles.size();
 
-    // Cria as variáveis
+    // Creating variables
     for (String t : titles) {
       progress = (100 * titles.indexOf(t)) / (size * 3);
       w.write(tab + "private String " + t + endLine);
     }
-    
+
+    // Creates the private builder
     w.write(lineSpace);
     w.write(tab + "/** Private constructor */\n");
-    // Cria o constutor privado
-    w.write(tab + "private " + capitalize(name) + "{\n");
+    w.write(tab + "private " + name + "{\n");
     w.write(tab + "}\n");
 
+    // Creates the getters
     w.write(lineSpace);
     w.write(tab + "/** Getters */\n");
-    // Cria os Getters
     for (String t : titles) {
       progress = 33 + (100 * titles.indexOf(t)) / (size * 3);
       w.write(getMethod(t.trim()));
     }
 
+    // Creates the setters
     w.write(lineSpace);
     w.write(tab + "/** Setters */\n");
-    // Cria os Setters
     for (String t : titles) {
       progress = 66 + (100 * titles.indexOf(t)) / (size * 3);
       w.write(setMethod(t.trim()));
@@ -118,7 +115,6 @@ public class BeanCreator {
 
     w.flush();
     w.close();
-    System.out.println("fim");
     progress = 100;
   }
 

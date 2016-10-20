@@ -22,6 +22,7 @@ import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import components.progress.Progress;
+import utilities.HiberXUtilities;
 import utilities.Utilities;
 
 public class CreatorView extends JFrame implements ActionListener, Progress {
@@ -188,7 +189,8 @@ public class CreatorView extends JFrame implements ActionListener, Progress {
     if (JFileChooser.APPROVE_OPTION == chooser.showSaveDialog(null)) {
       File selected = chooser.getSelectedFile();
       excel.setText(selected.getAbsolutePath());
-      String javaText = selected.getAbsolutePath().substring(0, selected.getAbsolutePath().lastIndexOf("\\") + 1) + selected.getName().substring(0, selected.getName().lastIndexOf(".") + 1) + "java";
+      String javaText = HiberXUtilities.getName(selected.getName()); 
+      javaText = selected.getAbsolutePath().substring(0, selected.getAbsolutePath().lastIndexOf("\\") + 1) + javaText + ".java";
       java.setText(javaText);
     }
   }

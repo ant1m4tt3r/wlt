@@ -15,6 +15,12 @@ import beans.SamplingPoint;
  * @see PontoDeAmostragem
  */
 public class GeolocationUtilities {
+  
+  /**
+   * Private constructor, no one can instantiate this class.
+   */
+  private GeolocationUtilities() {
+  }
 
   public static Point convertPointToLatLong(Point point, int zone) throws Exception {
     char letter;
