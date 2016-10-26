@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" output="target/classes" path="src">
+	<classpathentry including="**/*.java" kind="src" output="target/classes" path="src">
 		<attributes>
 			<attribute name="optional" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
@@ -10,9 +10,15 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/fgutils"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/swingx"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/tableFilter"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/geo-tools"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/geoTools"/>
-	<classpathentry kind="lib" path="C:/Workspace/Blibliotecas/lib/tableFilter/tablefilter-swing-5.2.1.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
