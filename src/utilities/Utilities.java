@@ -27,7 +27,7 @@ public class Utilities {
 	 */
 	private Utilities() {
 	}
-
+	
 	/**
 	 * Selects randomly an object
 	 * 
