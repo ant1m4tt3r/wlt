@@ -7,6 +7,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JToggleButton;
 
+import utilities.FileUtilities;
+
 public class JButtonFactory {
 
   /**
@@ -20,7 +22,7 @@ public class JButtonFactory {
    */
   public static JButton createToolButton(String imagePath, String actionCommand, ActionListener listener) {
     // Look for the image.
-    URL imageURL = services.FileServices.getInstance().getClass().getResource(imagePath);
+    URL imageURL = FileUtilities.getInstance().getClass().getResource(imagePath);
 
     // Create and initialize the button.
     JButton button = new JButton();
@@ -49,7 +51,7 @@ public class JButtonFactory {
    */
   public static JToggleButton createToolToggleButton(String imagePath, String actionCommand, ActionListener listener) {
     // Look for the image.
-    URL imageURL = services.FileServices.getInstance().getClass().getResource(imagePath);
+    URL imageURL = FileUtilities.getInstance().getClass().getResource(imagePath);
 
     // Create and initialize the button.
     JToggleButton button = new JToggleButton();

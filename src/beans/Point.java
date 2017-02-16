@@ -4,11 +4,9 @@ public class Point {
 
   private Double x;
   private Double y;
+  private int z;
   private Integer zone;
   private Double analysisValue;
-
-  // TODO tem que verificar a necessidade deste z
-  private int z;
 
 
   public Point(double x, double y, int z, int zone) {
